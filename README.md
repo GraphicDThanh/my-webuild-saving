@@ -13,7 +13,7 @@
 ## 30 days of sharing
 
 > 
-> Some description
+> #30daysofsharing là phong trào chia sẻ kiến thức ở WeBuild được khởi xướng bởi "Cậu Làm Vườn"
 >
 
 ### Frontend
@@ -88,9 +88,91 @@ Và đây là thành quả
 
 **Note 2:** Ngoài ra còn 1 try hard mode là làm sao để take into account cả art direction, width, screen width và pixel density. Nếu phải đến bước này thì chúc các bạn may mắn, bình an, mạnh dỏi và minh mẫn :byeanim:
 
-  </details>
+</details>
   
-## Category Name
+<details>
+  <summary>Let's talk about Accessibility (A11y)</summary>
+  
+  > By: [Huytd - TheFullSnack](https://thefullsnack.com/)
+  >
+  > Date: 24/01/2021
+  
+  Một trang web đạt chuẩn accessibility khi nó được thiết kế và phát triển để giúp cho mọi người đều có thể sử dụng được, kể cả những người già, những người khuyết tật hay đơn giản là những người không sử dụng các thiết bị input thông thường trên máy tính.
+  
+  **Sử dụng được ở đây có nghĩa là:**
+  
+  - Có thể tiếp nhận được nội dung trên trang web (ví dụ người khiếm thị vẫn có thể nghe được nội dung văn bản, hình ảnh, hoặc người khiếm thính vẫn có thể đọc được các nội dung âm thanh,...)
+  
+  - Có thể navigate được, và tương tác được với nội dung trên trang web (người không dùng chuột thì vẫn có thể navigate bằng bàn phím, người khiếm thị vẫn có thể navigate hoặc nhập liệu được bằng giọng nói... ví dụ thế)
+  
+  Tất nhiên accessibility vẫn có thể đem lại rất nhiều lợi ích cho những người không mang khuyết tật, ví dụ keyboard navigation, hoặc người nào thị lực kém, vẫn chỉnh được chữ to lên, high constrast hơn, ai xài kết nối internet kém vẫn có thể sử dụng được trang web mà không gặp trở ngại.
+  
+  Nếu chỉ có ý định support accessibility một cách cơ bản, bạn có thể focus vào các yếu tố sau:
+  - Đừng thay đổi thuộc tính tabIndex của một element nếu không cần thiết
+  - Đừng disable cái focus outline của một element (repeat after me: outline: none trong CSS là một tội ác)
+  - Nếu phải disable focus outline vì nó quá xấu, thì phải design một cái outline mới đẹp hơn và rõ ràng hơn để bỏ vào
+  - Sử dụng semantics HTML tags như <article>, <main>, <nav>,... nếu có thể
+  - Với các input element, nên đặt thuộc tính role một cách rõ ràng và chính xác
+  - Sử dụng element đúng với mục đích của nó, ví dụ, không dùng thẻ <div> để làm nút bấm (button)
+  - Sử dụng các thuộc tính aria-* như aria-label, aria-labelledby, aria-descibedby,... để chú thích và chỉ ra mối quan hệ cho các nội dung/element trên trang web
+  
+Hiện tại, các hệ điều hành và các trình duyệt đữa đưa ra rất nhiều tiện ích để hỗ trợ accessibility, như là screen readers (đọc nội dung của trang web dựa vào các thuộc tính aria-*, trên MacOS có VoiceOver, trên Windows phải sử dụng các ứng dụng của bên thứ 3 như JAWS), hay các giải pháp điều khiển máy tính thông qua mắt nhìn (built-in của MacOS),... tất cả những giải pháp này đều phụ thuộc rất nhiều vào tiêu chuẩn WCAG.
+
+**Có thể tham khảo thêm các tài liệu sau đây về accessibility:**
+
+- Một vài bước kiểm tra accessibility đơn giản (https://www.w3.org/WAI/test-evaluate/preliminary/)
+- Tiêu chuẩn Web Content Accessibility Guidelines (WCAG) https://www.w3.org/WAI/WCAG21/quickref/
+
+  Bên cạnh đối tượng user là những người bình thường, lành lặn, đầy đủ cả tay chân tai mắt mũi mà chúng ta vẫn tưởng tượng ra hằng ngày, ngoài kia vẫn còn rất nhiều người kém may mắn hơn, và họ vẫn có điều kiện để tiêp xúc với công nghệ mỗi ngày, và những user như họ cần được hỗ trợ nhiều hơn từ phía những người trực tiếp làm ra sản phẩm, là frontend developer chúng ta, cho nên, hãy bỏ chút thời gian và công sức để giúp đỡ những user đặc biệt này, mình chắc chắn là bạn sẽ thấy công việc của mình có nhiều ý nghĩa hơn.
+
+  Đặc biệt, đối với những frontend developer đang làm việc tại Mỹ, thì luật pháp quy định mọi trang web đều phải accessible, nên không support hoặc không quan tâm đến a11y có thể coi là phạm pháp.
+</details>
+
+<details>
+  <summary>Quick note về khái niệm origin trong JavaScript.</summary>
+  
+  > By: [Huytd - TheFullSnack](https://thefullsnack.com/)
+  >
+  > Date: 25/01/2021
+  
+  Một URL thường sẽ có cấu tạo như sau:
+  `<scheme>://<host>:<port>/<path>`
+  Ví dụ:
+  - http://localhost:45848/hello
+-   https://thefullsnack.com
+  
+  Một tập hợp của scheme, host và port sẽ định nghĩa thành một origin. Vậy cho nên khi nói hai nội dung có cùng origin tức là chúng nằm trên cùng scheme + host + port, và tất nhiên nếu một trong 3 yếu tố trên khác nhau thì chúng ta có 2 nội dung không nằm cùng origin với nhau.
+  
+  Riêng IE, với phong cách nổi loạn thường thấy, sẽ bỏ qua port khi xét origin, nên 2 URL có cùng scheme + host mà khác port thì vẫn tính là same origin.
+  
+  **Ví dụ về 2 URL có cùng origin:**
+  - https://something.com/hello 
+  - https://something.com/yolo 
+  
+  Ví dụ về các URL không có cùng origin với nhau:
+  
+  // Khác scheme
+  - http://abc.com/bobo
+  - https://abc.com/koko
+  
+  // Khác host
+  - https://foo.abc.com
+  - https://bar.abc.com
+  
+  // Khác port
+  - https://abc.com
+  - https://abc.com:8443
+  
+  Phân biệt được sự khác nhau về origin có thể giúp bạn hiểu và tìm ra giải pháp dễ dàng hơn khi gặp những vấn đề liên quan đến CORS (cross-origin resource sharing), khi truy xuất localStorage, hay khi tìm hiểu về execution context, event loop,...
+  
+  Đối với các thao tác liên quan đến network connection trên một trang web (HTTP request, hay load image), việc truy xuất cross-origin cho các thao tác sau đây được cho phép:
+  
+  - Redirect, link, submit form
+  - Embedding (như inject content dùng thẻ <script>, <link>, <img>, <video>, <audio>, <object>, <embed>, <iframe>, load font dùng @font-face,...)
+  
+  Đối với Cookie, thì khác subdomain vẫn được tính là cùng origin.
+</details>
+
 <details>
   <summary>Sub title</summary>
   
@@ -100,3 +182,20 @@ Và đây là thành quả
   
   Content go here
 </details>
+
+<details>
+  <summary>Sub title</summary>
+  
+  > By: Cậu Làm Vườn
+  >
+  > Date: 25/01/2021
+  
+  Content go here
+</details>
+
+## Category Name
+<details>
+  <summary>Sub title</summary>
+  Content go here
+</details>
+
